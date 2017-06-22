@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using GMailAPILibrary;
 
 namespace SupportAgent.Controllers
 {
@@ -11,9 +12,10 @@ namespace SupportAgent.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<Message> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<Message> messages = Message.GetMessages();
+            return messages;
         }
 
         // GET api/values/5
